@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-
+import db from '../db.json'
 
 
 const Title = styled.h1`
@@ -7,13 +7,19 @@ const Title = styled.h1`
   color: ${({ theme }) => theme.colors.secondary};
 `
 
-/* function Title(props) {  // mesmo do de cima
-   return (
-      <h1>{props.children}</h1>
-   )
-} */
+const BackgroundImage = styled.div`
+   background-image: url(${db.bg});
+   flex: 1;
+   background-size: cover;
+   background-position: center;
+`
 
 
 export default function Home() {
-   return <Title>Minha Página</Title>
+      return (
+         <BackgroundImage>
+            Olá pessoas como estão ? ....
+         </BackgroundImage>
+
+      )
 }
