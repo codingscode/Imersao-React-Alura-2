@@ -16,7 +16,11 @@ no terminal da pasta:
               
 
 
+no terminal da pasta aluraquiz:
+              npm run dev
 
 
+
+ver http://localhost:3000/
 
 
