@@ -42,17 +42,47 @@ const Widget = styled.div`
   }
 `
 
+Widget.Content = styled.div`
+   padding: 24px 32px 32px 32px;
+   & > *:first-child {
+      margin-top: 0;
+   }
+   & > *:last-child {
+      margin-bottom: 0;
+   }
+   ul {
+      list-style: none;
+      padding: 0;
+   }
+`
+
+Widget.Header = styled.header`
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+   padding: 18px 32px;
+   background-color: ${({ theme }) => theme.colors.primary};
+   
+   * {
+      margin: 0;
+   }
+`
+
 export default function Home() {
       return (
          <BackgroundImage>
             <QuizContainer>
                <Widget>
-                  <h1>The legend of zelda</h1>
-                  <p>Lorem epson asdihfweh kdfjw ....</p>
+                  <Widget.Content>
+                     <h1>The legend of zelda</h1>
+                     <p>Lorem epson asdihfweh kdfjw ....</p>
+                  </Widget.Content>
                </Widget>
                <Widget>
-                  <h1>The legend of zelda</h1>
-                  <p>Lorem epson asdihfweh kdfjw ....</p>
+                  <Widget.Content>
+                     <h1>The legend of zelda</h1>
+                     <p>Lorem epson asdihfweh kdfjw ....</p>
+                  </Widget.Content>
                </Widget>
 
             </QuizContainer>
