@@ -1,7 +1,19 @@
 
+
+https://nextjs.org/
+
+https://github.com/vercel/vercel
+
+https://github.com/vercel/next.js/
+
+https://github.com/vercel/next.js/tree/canary/examples/with-styled-components
+
 https://reactjs.org/
 
 
+no terminal da pasta:
+              npx create-next-app --example with-styled-components
+              
 
 
 
