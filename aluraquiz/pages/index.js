@@ -73,14 +73,18 @@ export default function Home() {
          <BackgroundImage>
             <QuizContainer>
                <Widget>
-                  <Widget.Content>
+                  <Widget.Header>
                      <h1>The legend of zelda</h1>
+                  </Widget.Header>
+                  <Widget.Content>
                      <p>Lorem epson asdihfweh kdfjw ....</p>
                   </Widget.Content>
                </Widget>
                <Widget>
-                  <Widget.Content>
+                  <Widget.Header>
                      <h1>The legend of zelda</h1>
+                  </Widget.Header>
+                  <Widget.Content>
                      <p>Lorem epson asdihfweh kdfjw ....</p>
                   </Widget.Content>
                </Widget>
