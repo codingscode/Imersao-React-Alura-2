@@ -1,5 +1,9 @@
 import styled from 'styled-components'
 import db from '../db.json'
+import {Widget} from '../src/components/Widget'
+import Footer from '../src/components/Footer'
+import GitHubCorner from '../src/components/GitHubCorner'
+import QuizBackground from '../src/components/QuizBackground'
 
 
 
@@ -21,56 +25,9 @@ export const QuizContainer = styled.div`
   }
 `
 
-const Widget = styled.div`
-  margin-top: 24px;
-  margin-bottom: 24px;
-  border: 1px solid #4CAF50;
-  background-color: #1C1814;
-  border-radius: 4px;
-  overflow: hidden;
-
-  h1, h2, h3 {
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 1;
-    margin-bottom: 0;
-  }
-  p {
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1;
-  }
-`
-
-Widget.Content = styled.div`
-   padding: 24px 32px 32px 32px;
-   & > *:first-child {
-      margin-top: 0;
-   }
-   & > *:last-child {
-      margin-bottom: 0;
-   }
-   ul {
-      list-style: none;
-      padding: 0;
-   }
-`
-
-Widget.Header = styled.header`
-   display: flex;
-   justify-content: flex-start;
-   align-items: center;
-   padding: 18px 32px;
-   background-color: ${({ theme }) => theme.colors.primary};
-   
-   * {
-      margin: 0;
-   }
-`
-
 export default function Home() {
       return (
-         <BackgroundImage>
+         <QuizBackground backgroundImage={db.bg} >
             <QuizContainer>
                <Widget>
                   <Widget.Header>
@@ -81,16 +38,15 @@ export default function Home() {
                   </Widget.Content>
                </Widget>
                <Widget>
-                  <Widget.Header>
-                     <h1>The legend of zelda</h1>
-                  </Widget.Header>
                   <Widget.Content>
+                     <h1>Quizes das pessoas</h1>
                      <p>Lorem epson asdihfweh kdfjw ....</p>
                   </Widget.Content>
                </Widget>
-
+               <Footer />
             </QuizContainer>
-         </BackgroundImage>
+            <GitHubCorner projectUrl={"https://github.com/codingscode/"} />
+         </QuizBackground>
 
       )
 }
