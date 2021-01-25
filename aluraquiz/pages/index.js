@@ -5,11 +5,13 @@ import styled from 'styled-components'
   color: ${({ theme }) => theme.colors.primary};
 ` */
 
-function Title() {
-   return <h1>Qualquer título</h1>
+function Title(props) {
+   return (
+      <h1>{props.children}</h1>
+   )
 }
 
 
 export default function Home() {
-   return <Title>My page</Title>
+   return <Title>Minha Página</Title>
 }
