@@ -27,6 +27,8 @@ https://material-ui.com/pt/customization/color/
 
 https://github.com/alura-challenges/aluraquiz-base
 
+https://www.figma.com/file/cg1MIzSRRss8ggpypQbmdD/AluraQuiz
+
 
 
 

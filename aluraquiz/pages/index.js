@@ -21,11 +21,39 @@ export const QuizContainer = styled.div`
   }
 `
 
+const Widget = styled.div`
+  margin-top: 24px;
+  margin-bottom: 24px;
+  border: 1px solid #4CAF50;
+  background-color: #1C1814;
+  border-radius: 4px;
+  overflow: hidden;
+
+  h1, h2, h3 {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 0;
+  }
+  p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+  }
+`
+
 export default function Home() {
       return (
          <BackgroundImage>
             <QuizContainer>
-               Olá pessoas como estão ? ....
+               <Widget>
+                  <h1>The legend of zelda</h1>
+                  <p>Lorem epson asdihfweh kdfjw ....</p>
+               </Widget>
+               <Widget>
+                  <h1>The legend of zelda</h1>
+                  <p>Lorem epson asdihfweh kdfjw ....</p>
+               </Widget>
 
             </QuizContainer>
          </BackgroundImage>
