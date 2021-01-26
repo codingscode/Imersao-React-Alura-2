@@ -34,9 +34,23 @@ https://eslint.org/
 no terminal da pasta do projeto:
         npm install eslint --dev
         npm run eslint:init, depois apague package-lock.json e faça npm i
+        npm run lint
+
 
 
 https://github.com/airbnb/javascript
+
+installar extensão eslint
+
+
+ver:  http://localhost:3000/quiz
+
+
+
+
+
+
+
 
 
 
