@@ -26,13 +26,16 @@ function QuestionWidget({ question, totalQuestions, questionIndex }) {
       <Widget>
           <Widget.Header>
               {
-                  <h3>Pergunta {questionIndex + 1} de {`${totalQuestions}`}</h3>
+                  <h3>{`Pergunta ${questionIndex + 1} de ${totalQuestions}`}</h3>
               }
           </Widget.Header>
           <img alt="Descrição" style={{width: '100%', height: '150px', objectFit: 'cover'}} src={question.image} />
           <Widget.Content>
               <h2>{question.title}</h2>
               <p>{question.description}</p>
+              <pre>
+                  {JSON.stringify(question, null, 4)}
+              </pre>
               <Button>Confirmar</Button>
           </Widget.Content>
       </Widget>
