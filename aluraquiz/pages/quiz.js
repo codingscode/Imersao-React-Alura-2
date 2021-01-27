@@ -21,29 +21,36 @@ function LoadingWidget() {
     )
 }
 
+function QuestionWidget({ question, totalQuestions, questionIndex }) {
+    return (
+      <Widget>
+          <Widget.Header>
+              {
+                  <h3>Pergunta {questionIndex + 1} de {`${totalQuestions}`}</h3>
+              }
+          </Widget.Header>
+          <img alt="Descrição" style={{width: '100%', height: '150px', objectFit: 'cover'}} src={question.image} />
+          <Widget.Content>
+              <h2>{question.title}</h2>
+              <p>{question.description}</p>
+              <Button>Confirmar</Button>
+          </Widget.Content>
+      </Widget>
+    )
+}
+
 
 export default function QuizPage() {
+        const questionIndex = 0
         console.log('db.questions: ', db.questions)
-        const question = db.questions[0]
-
+        const question = db.questions[questionIndex]
+        const totalQuestions = db.questions.length
     
         return (
             <QuizBackground backgroundImage={db.bg}>
               <QuizContainer>
                   <QuizLogo />
-                  <Widget>
-                      <Widget.Header>
-                          {
-                              <h3>Pergunta 1 de {`${db.questions.length}`}</h3>
-                          }
-                      </Widget.Header>
-                      <img alt="Descrição" style={{width: '100%', height: '150px', objectFit: 'cover'}} src={question.image} />
-                      <Widget.Content>
-                          <h2>{question.title}</h2>
-                          <p>{question.description}</p>
-                          <Button>Confirmar</Button>
-                      </Widget.Content>
-                  </Widget>
+                  <QuestionWidget question={question} totalQuestions={totalQuestions} questionIndex={questionIndex} />
                   <LoadingWidget />
               </QuizContainer>
             </QuizBackground>
