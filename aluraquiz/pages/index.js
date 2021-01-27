@@ -24,7 +24,8 @@ export const QuizContainer = styled.div`
 `
 
 export default function Home() {
-      const router = useRouter()
+   const router = useRouter()
+   let name = ''
       
 
       return (
@@ -39,15 +40,16 @@ export default function Home() {
                      <h1>The legend of zelda</h1>
                   </Widget.Header>
                   <Widget.Content>
-                     <form onSubmit={function(infoEvento) {
+                     <form onSubmit={(infoEvento) => {
                          infoEvento.preventDefault()
-                         const name = 'Paulo'
-                         
                          router.push(`/quiz?name=${name}`)
                          console.log('fazendo envio pelo react')
                      }} >
-                        <input placeholder="Seu nome" />
-                        <button type="submit" >jogar[nome]</button>
+                        <input placeholder="Seu nome" onChange={(evento) => {
+                            console.log(evento.target.value)
+                            name = evento.target.value
+                        }} />
+                        <button type="submit" disabled={name.length === 0} >jogar {name}</button>
                      </form>
                   </Widget.Content>
                </Widget>
