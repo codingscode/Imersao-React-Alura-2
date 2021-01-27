@@ -55,8 +55,14 @@ function QuestionWidget({ question, totalQuestions, questionIndex }) {
     )
 }
 
+const screenStates = {
+    QUIZ: 'QUIZ',
+    LOADING: 'LOADING',
+    RESULT: 'RESULT'
+}
 
 export default function QuizPage() {
+        const screenState = 'LOADING'
         const questionIndex = 0
         console.log('db.questions: ', db.questions)
         const question = db.questions[questionIndex]
@@ -66,8 +72,11 @@ export default function QuizPage() {
             <QuizBackground backgroundImage={db.bg}>
               <QuizContainer>
                   <QuizLogo />
-                  <QuestionWidget question={question} totalQuestions={totalQuestions} questionIndex={questionIndex} />
-                  <LoadingWidget />
+                  {screenState === screenStates.QUIZ && (
+                     <QuestionWidget question={question} totalQuestions={totalQuestions} questionIndex={questionIndex} />
+                  )}
+                  {screenState === screenStates.LOADING && ( <LoadingWidget /> )}
+                  {screenState === screenStates.RESULT && ( <div>Você acertou x questões, parabéns</div> )}
               </QuizContainer>
             </QuizBackground>
         )
