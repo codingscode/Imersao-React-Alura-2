@@ -24,7 +24,7 @@ function LoadingWidget() {
 
 export default function QuizPage() {
         console.log('db.questions: ', db.questions)
-        
+        const question = db.questions[0]
 
     
         return (
@@ -37,10 +37,10 @@ export default function QuizPage() {
                               <h3>Pergunta 1 de {`${db.questions.length}`}</h3>
                           }
                       </Widget.Header>
-                      <img alt="Descrição" style={{width: '100%', height: '150px', objectFit: 'cover'}} src="https://placehold.it/400x400" />
+                      <img alt="Descrição" style={{width: '100%', height: '150px', objectFit: 'cover'}} src={question.image} />
                       <Widget.Content>
-                          <h2>Título</h2>
-                          <p>Descrição</p>
+                          <h2>{question.title}</h2>
+                          <p>{question.description}</p>
                           <Button>Confirmar</Button>
                       </Widget.Content>
                   </Widget>
