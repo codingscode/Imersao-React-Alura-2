@@ -24,8 +24,9 @@ export const QuizContainer = styled.div`
 `
 
 export default function Home() {
-   const router = useRouter()
-   let name = ''
+      const router = useRouter()
+      const [name, setName] = React.useState('')
+      console.log('retorno do useState: ', name, setName)
       
 
       return (
@@ -47,7 +48,7 @@ export default function Home() {
                      }} >
                         <input placeholder="Seu nome" onChange={(evento) => {
                             console.log(evento.target.value)
-                            name = evento.target.value
+                            setName(evento.target.value)
                         }} />
                         <button type="submit" disabled={name.length === 0} >jogar {name}</button>
                      </form>
