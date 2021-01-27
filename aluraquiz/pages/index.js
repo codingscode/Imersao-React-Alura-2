@@ -46,11 +46,8 @@ export default function Home() {
                          infoEvento.preventDefault()
                          router.push(`/quiz?name=${name}`)
                          console.log('fazendo envio pelo react')
-                     }} >
-                        <Input placeholder="Seu nome" onChange={(evento) => {
-                            console.log(evento.target.value)
-                            setName(evento.target.value)
-                        }} />
+                            }} >
+                        <Input placeholder="Seu nome" onChange={(evento) => (setName(evento.target.value)) } />
                         <button type="submit" disabled={name.length === 0} >jogar {name}</button>
                      </form>
                   </Widget.Content>

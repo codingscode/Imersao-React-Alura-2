@@ -35,6 +35,7 @@ no terminal da pasta do projeto:
         npm install eslint --dev
         npm run eslint:init, depois apague package-lock.json e faça npm i
         npm run lint
+        npm i prop-types
 
 
 
