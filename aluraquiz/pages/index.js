@@ -9,7 +9,7 @@ import QuizLogo from '../src/components/QuizLogo'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Input from '../src/components/Input'
-
+import Button from '../src/components/Button'
 
 
 
@@ -47,8 +47,8 @@ export default function Home() {
                          router.push(`/quiz?name=${name}`)
                          console.log('fazendo envio pelo react')
                             }} >
-                        <Input placeholder="Seu nome" onChange={(evento) => (setName(evento.target.value)) } />
-                        <button type="submit" disabled={name.length === 0} >jogar {name}</button>
+                        <Input name="nomeusuario" value={name} placeholder="Seu nome" onChange={(evento) => (setName(evento.target.value)) } />
+                        <Button type="submit" disabled={name.length === 0} >{`Jogar ${name}`}</Button>
                      </form>
                   </Widget.Content>
                </Widget>
