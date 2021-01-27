@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import db from '../db.json'
 import Widget from '../src/components/Widget'
 import QuizLogo from '../src/components/QuizLogo'
@@ -62,11 +62,20 @@ const screenStates = {
 }
 
 export default function QuizPage() {
-        const screenState = 'LOADING'
+        const [screenState, setScreenState] = useState(screenStates.LOADING)
         const questionIndex = 0
         console.log('db.questions: ', db.questions)
         const question = db.questions[questionIndex]
         const totalQuestions = db.questions.length
+
+        useEffect(() => {
+            setTimeout(() => {
+              setScreenState(screenStates.QUIZ)
+    
+            }, 1500)
+
+        }, [])
+
     
         return (
             <QuizBackground backgroundImage={db.bg}>
