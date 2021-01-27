@@ -16,12 +16,12 @@ const InputBase = styled.input`
 `
 
 
-export default function Input() {
+export default function Input( {onChange} ) {
     
      
      return (
          <div>
-             <InputBase  />
+             <InputBase onChange={onChange} />
          </div>
      )
 }
