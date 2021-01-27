@@ -33,10 +33,21 @@ function QuestionWidget({ question, totalQuestions, questionIndex }) {
           <Widget.Content>
               <h2>{question.title}</h2>
               <p>{question.description}</p>
-              <pre>
-                  {JSON.stringify(question, null, 4)}
-              </pre>
-              <Button>Confirmar</Button>
+              <form>
+                  {question.alternatives.map((alternative, alternativeIndex) => {
+                      const alternativeId = `alternative__${alternativeIndex}`
+                      return (
+                        <label htmlFor={alternativeId} >
+                            {alternative}
+                            <input id={alternativeId} type="radio" />
+                        </label>
+                      )
+                  })}
+                  <pre>
+                      {JSON.stringify(question, null, 4)}
+                  </pre>
+                  <Button>Confirmar</Button>
+              </form>
           </Widget.Content>
       </Widget>
     )
