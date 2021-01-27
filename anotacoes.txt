@@ -48,7 +48,7 @@ ver:  http://localhost:3000/quiz
 
 preencher a entrada e clicar no botão
 
-
+um só fica selecionado
 
 
 
