@@ -24,6 +24,27 @@
            "background: linear-gradient(#e66465, #9198e5);",
            "background: gradient(#e66465, #9198e5);"
         ]
+      },
+      {
+        "image": "https://miro.medium.com/max/3200/1*OF0xEMkWBv-69zvmNs6RDQ.gif",
+        "title": "Qual a diferença entre = , == e === ?",
+        "description": "Faz tempo em haha",
+        "answer": 0,
+        "alternatives": [
+           "O == verifica a igualdade do valor.",
+           "O === significa que a variavel recebe valor.",
+           "O = significa igualdade de valor e tipo."
+        ]
+      },
+      {
+        "image": "https://media3.giphy.com/media/26his8ERHOSxKuWw8/giphy.gif",
+        "title": "Qual a diferença entre map x forEach?",
+        "description": "Fazendo teste",
+        "answer": 0,
+        "alternatives": [
+           " O método map() invoca a função callback passada por argumento para cada elemento do Array e devolve um novo Array como resultado.",
+           "O método forEach() não executa uma dada função em cada elemento de um array"
+        ]
       }
     ],
     "external": [
