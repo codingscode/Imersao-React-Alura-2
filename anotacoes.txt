@@ -52,7 +52,7 @@ um só fica selecionado
 
 passagem de perguntas
 
-
+evita a marcação da questão anterior
 
 
 

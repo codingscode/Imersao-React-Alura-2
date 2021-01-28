@@ -26,6 +26,8 @@ function QuestionWidget({ question, totalQuestions, questionIndex, onSubmit }) {
     const [isQuestionSubmited, setIsQuestionSubmited] = useState(false)
     const questionId = `question__${questionIndex}`
     const isCorrect = selectedAlternative === question.answer
+    const hasAlternativeSelected = selectedAlternative !== undefined
+
 
     return (
       <Widget>
@@ -44,6 +46,7 @@ function QuestionWidget({ question, totalQuestions, questionIndex, onSubmit }) {
                   setTimeout(() => {
                       onSubmit()
                       setIsQuestionSubmited(false)
+                      setSelectedAlternative(undefined)  
                   }, 1000)
                 }} >
                   {question.alternatives.map((alternative, alternativeIndex) => {
@@ -58,7 +61,7 @@ function QuestionWidget({ question, totalQuestions, questionIndex, onSubmit }) {
                   {/* <pre>
                       {JSON.stringify(question, null, 4)}
                   </pre> */}
-                  <Button type="submit" >Confirmar</Button>
+                  <Button type="submit" disabled={!hasAlternativeSelected} >Confirmar</Button>
                   <p>{selectedAlternative}</p>
                   {isQuestionSubmited && isCorrect && <p>Você acertou !</p> }
                   {isQuestionSubmited && !isCorrect && <p>Você errou !</p> }
@@ -87,7 +90,7 @@ export default function QuizPage() {
             setTimeout(() => {
               setScreenState(screenStates.QUIZ)
     
-            }, 1500)
+            }, 1000)
 
         }, [])
 
@@ -97,7 +100,7 @@ export default function QuizPage() {
                 setCurrentQuestion(nextQuestion)
             }
             else {
-                setCurrentQuestion(screenStates.RESULT)
+                setScreenState(screenStates.RESULT)
             }
         }
     
