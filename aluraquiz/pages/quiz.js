@@ -23,6 +23,7 @@ function LoadingWidget() {
 
 function QuestionWidget({ question, totalQuestions, questionIndex, onSubmit }) {
     const [selectedAlternative, setSelectedAlternative] = useState(undefined)
+    const [isQuestionSubmited, setIsQuestionSubmited] = useState(false)
     const questionId = `question__${questionIndex}`
     const isCorrect = selectedAlternative === question.answer
 
@@ -39,7 +40,11 @@ function QuestionWidget({ question, totalQuestions, questionIndex, onSubmit }) {
               <p>{question.description}</p>
               <form onSubmit={(infosDoEvento) => { 
                   infosDoEvento.preventDefault()
-                  onSubmit()
+                  setIsQuestionSubmited(true)
+                  setTimeout(() => {
+                      onSubmit()
+                      setIsQuestionSubmited(false)
+                  }, 1000)
                 }} >
                   {question.alternatives.map((alternative, alternativeIndex) => {
                       const alternativeId = `alternative__${alternativeIndex}`
@@ -50,12 +55,13 @@ function QuestionWidget({ question, totalQuestions, questionIndex, onSubmit }) {
                         </Widget.Topic>
                       )
                   })}
-                  <pre>
+                  {/* <pre>
                       {JSON.stringify(question, null, 4)}
-                  </pre>
+                  </pre> */}
                   <Button type="submit" >Confirmar</Button>
                   <p>{selectedAlternative}</p>
-                  {isCorrect ? <p>Você acertou !</p> : <p>Você errou !</p> }
+                  {isQuestionSubmited && isCorrect && <p>Você acertou !</p> }
+                  {isQuestionSubmited && !isCorrect && <p>Você errou !</p> }
                                     
               </form>
           </Widget.Content>
