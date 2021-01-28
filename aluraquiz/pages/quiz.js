@@ -22,7 +22,9 @@ function LoadingWidget() {
 }
 
 function QuestionWidget({ question, totalQuestions, questionIndex, onSubmit }) {
+    const [selectedAlternative, setSelectedAlternative] = useState(undefined)
     const questionId = `question__${questionIndex}`
+    const isCorrect = selectedAlternative === question.answer
 
     return (
       <Widget>
@@ -42,8 +44,8 @@ function QuestionWidget({ question, totalQuestions, questionIndex, onSubmit }) {
                   {question.alternatives.map((alternative, alternativeIndex) => {
                       const alternativeId = `alternative__${alternativeIndex}`
                       return (
-                        <Widget.Topic htmlFor={alternativeId} as="label" >
-                            <input id={alternativeId} type="radio" name={questionId}  />
+                        <Widget.Topic key={alternativeId} htmlFor={alternativeId} as="label" >
+                            <input id={alternativeId} type="radio" name={questionId} onChange={() => setSelectedAlternative(alternativeIndex)} />
                             {alternative}
                         </Widget.Topic>
                       )
@@ -52,6 +54,9 @@ function QuestionWidget({ question, totalQuestions, questionIndex, onSubmit }) {
                       {JSON.stringify(question, null, 4)}
                   </pre>
                   <Button type="submit" >Confirmar</Button>
+                  <p>{selectedAlternative}</p>
+                  {isCorrect ? <p>Você acertou !</p> : <p>Você errou !</p> }
+                                    
               </form>
           </Widget.Content>
       </Widget>
