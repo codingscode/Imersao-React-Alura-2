@@ -37,6 +37,7 @@ function ResultWidget({ results }) {
     )
 }
 
+
 function LoadingWidget() {
     return (
         <Widget>
@@ -51,7 +52,7 @@ function LoadingWidget() {
     )
 }
 
-function QuestionWidget({ question, totalQuestions, questionIndex, onSubmit }) {
+function QuestionWidget({ question, totalQuestions, questionIndex, onSubmit, addResult }) {
     const [selectedAlternative, setSelectedAlternative] = useState(undefined)
     const [isQuestionSubmited, setIsQuestionSubmited] = useState(false)
     const questionId = `question__${questionIndex}`
@@ -74,6 +75,7 @@ function QuestionWidget({ question, totalQuestions, questionIndex, onSubmit }) {
                   infosDoEvento.preventDefault()
                   setIsQuestionSubmited(true)
                   setTimeout(() => {
+                      addResult(isCorrect)
                       onSubmit()
                       setIsQuestionSubmited(false)
                       setSelectedAlternative(undefined)  
@@ -109,17 +111,21 @@ const screenStates = {
 }
 
 export default function QuizPage() {
-        const [screenState, setScreenState] = useState(screenStates.RESULT)
-        const [results, setResults] = useState([true, false, true])
+        const [screenState, setScreenState] = useState(screenStates.LOADING)
+        const [results, setResults] = useState([])
         const [currentQuestion, setCurrentQuestion] = useState(0)
         const questionIndex = currentQuestion
         console.log('db.questions: ', db.questions)
         const question = db.questions[questionIndex]
         const totalQuestions = db.questions.length
 
+        function addResult(result) {
+            setResults([...results, result])
+        }
+
         useEffect(() => {
             setTimeout(() => {
-              //setScreenState(screenStates.QUIZ)
+               setScreenState(screenStates.QUIZ)
             }, 1000)
 
         }, [])
@@ -140,7 +146,7 @@ export default function QuizPage() {
                   <QuizLogo />
                   {screenState === screenStates.QUIZ && (
                      <QuestionWidget onSubmit={handleSubmitQuiz} question={question} totalQuestions={totalQuestions} 
-                         questionIndex={questionIndex} />
+                         questionIndex={questionIndex} addResult={addResult} />
                   )}
                   {screenState === screenStates.LOADING && ( <LoadingWidget /> )}
                   {screenState === screenStates.RESULT && <ResultWidget results={results} /> }
