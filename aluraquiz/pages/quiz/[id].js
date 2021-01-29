@@ -9,3 +9,13 @@ export default function QuizDaGalera() {
        </div>
     )
 }
+
+
+export async function getServerSideProps(context) {
+      console.log('Infos que o Next dá para nós: ', context)
+      return {
+         props: {}, // will be passed to the page component as props
+      }
+}
+
+
