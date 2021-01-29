@@ -7,6 +7,36 @@ import QuizContainer from '../src/components/QuizContainer'
 import Button from '../src/components/Button'
 
 
+function ResultWidget({ results }) {
+    return (
+        <Widget>
+            <Widget.Header>
+               Tela de Resultado
+            </Widget.Header>
+
+            <Widget.Content>
+              <p>Você acertou {results.reduce((somatoriaAtual, resultAtual) => {
+                    if (resultAtual == true) {
+                        return somatoriaAtual + 1
+                    }
+                    else {
+                        return somatoriaAtual  
+                    }
+                    }, 0)} perguntas</p>
+              <ul>
+                  {results.map((result, indice) => (
+                    <li key={indice}>
+                        {`#0${indice + 1} Resultado: ${result === true ? ' Acertou' : ' Errou'}`}
+                       {/*  #{indice + 1} Resultado: 
+                        {result === true ? 'Acertou' : 'Errou'} */}
+                    </li>
+                  ))}
+              </ul>
+            </Widget.Content>
+        </Widget>
+    )
+}
+
 function LoadingWidget() {
     return (
         <Widget>
@@ -79,7 +109,8 @@ const screenStates = {
 }
 
 export default function QuizPage() {
-        const [screenState, setScreenState] = useState(screenStates.LOADING)
+        const [screenState, setScreenState] = useState(screenStates.RESULT)
+        const [results, setResults] = useState([true, false, true])
         const [currentQuestion, setCurrentQuestion] = useState(0)
         const questionIndex = currentQuestion
         console.log('db.questions: ', db.questions)
@@ -88,8 +119,7 @@ export default function QuizPage() {
 
         useEffect(() => {
             setTimeout(() => {
-              setScreenState(screenStates.QUIZ)
-    
+              //setScreenState(screenStates.QUIZ)
             }, 1000)
 
         }, [])
@@ -113,7 +143,7 @@ export default function QuizPage() {
                          questionIndex={questionIndex} />
                   )}
                   {screenState === screenStates.LOADING && ( <LoadingWidget /> )}
-                  {screenState === screenStates.RESULT && ( <div>Você acertou x questões, parabéns</div> )}
+                  {screenState === screenStates.RESULT && <ResultWidget results={results} /> }
               </QuizContainer>
             </QuizBackground>
         )
