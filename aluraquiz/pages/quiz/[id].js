@@ -1,14 +1,15 @@
 import React from 'react'
+import QuizScreen from '../../src/screens/Quiz'
 
 
-export default function QuizDaGalera(props) {
+export default function QuizDaGalera({ dbExterno }) {
 
     return (
        <div style={{color: 'black'}} >
           Desafio da próxima aula
-
+          <QuizScreen  />
           <pre>
-             {JSON.stringify(props, null, 4)}
+             {JSON.stringify(dbExterno.questions, null, 4)}
           </pre>
        </div>
     )
