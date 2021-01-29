@@ -397,6 +397,14 @@ acessar http://localhost:3000/quiz/qualquercoisa?name=Aladin:
        ver console do vscode
 
 
+acessar http://localhost:3000/quiz/qualquercoisa?name=Aladin:
+       ver a tela       
+
+
+
+
+
+
 
 
 

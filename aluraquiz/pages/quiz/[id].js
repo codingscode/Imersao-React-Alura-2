@@ -1,11 +1,15 @@
 import React from 'react'
 
 
-export default function QuizDaGalera() {
+export default function QuizDaGalera(props) {
 
     return (
        <div style={{color: 'black'}} >
           Desafio da próxima aula
+
+          <pre>
+             {JSON.stringify(props, null, 4)}
+          </pre>
        </div>
     )
 }
@@ -23,13 +27,13 @@ export async function getServerSideProps(context) {
          })
          .then((respostaConvertidaEmObjeto) => respostaConvertidaEmObjeto)
          .catch((erro) => {
-            console.log('houve erro')
+            return 'houve erro'
          })
 
       console.log('dbExterno: \n', dbExterno)
 
       return {
-         props: {}
+         props: { dbExterno }
       }
 }
 
