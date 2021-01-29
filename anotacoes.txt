@@ -398,7 +398,7 @@ acessar http://localhost:3000/quiz/qualquercoisa?name=Aladin:
 
 
 acessar http://localhost:3000/quiz/qualquercoisa?name=Aladin:
-       ver a tela (idem)
+       ver a tela *idem
 
 
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import db from '../../../db.json'
+/* import db from '../../../db.json' */
 import Widget from '../../components/Widget'
 import QuizLogo from '../../components/QuizLogo'
 import QuizBackground from '../../components/QuizBackground'
@@ -117,14 +117,16 @@ const screenStates = {
     RESULT: 'RESULT'
 }
 
-export default function QuizPage() {
+export default function QuizPage({ externalQuestions, externalBg }) {
         const [screenState, setScreenState] = useState(screenStates.LOADING)
         const [results, setResults] = useState([])
         const [currentQuestion, setCurrentQuestion] = useState(0)
         const questionIndex = currentQuestion
-        console.log('db.questions: ', db.questions)
-        const question = db.questions[questionIndex]
-        const totalQuestions = db.questions.length
+        console.log('externalQuestions: ', externalQuestions)
+        const question = externalQuestions[questionIndex]
+        const totalQuestions = externalQuestions.length
+        const bg = externalBg
+
 
         function addResult(result) {
             setResults([...results, result])
@@ -148,7 +150,7 @@ export default function QuizPage() {
         }
     
         return (
-            <QuizBackground backgroundImage={db.bg}>
+            <QuizBackground backgroundImage={bg}>
               <QuizContainer>
                   <QuizLogo />
                   {screenState === screenStates.QUIZ && (

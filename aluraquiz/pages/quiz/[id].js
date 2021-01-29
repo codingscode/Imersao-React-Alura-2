@@ -3,15 +3,13 @@ import QuizScreen from '../../src/screens/Quiz'
 
 
 export default function QuizDaGalera({ dbExterno }) {
+   console.log('dbExterno: ', dbExterno)
 
     return (
-       <div style={{color: 'black'}} >
-          Desafio da próxima aula
-          <QuizScreen  />
-          <pre>
-             {JSON.stringify(dbExterno.questions, null, 4)}
-          </pre>
-       </div>
+         <QuizScreen externalQuestions={dbExterno.questions} bg={dbExterno.bg} />
+         /* <pre>
+          {JSON.stringify(dbExterno.questions, null, 4)}
+         </pre> */
     )
 }
 
