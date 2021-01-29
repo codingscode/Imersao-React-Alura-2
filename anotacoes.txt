@@ -68,6 +68,8 @@ digitar no console do browser:
                 })
 
 
+ver:
+       http://localhost:3000/quiz/quiz_externo     
 
 
 
