@@ -362,6 +362,9 @@ Infos que o Next dá para nós:  {
 }
 
 
+acessar http://localhost:3000/quiz/qualquercoisa?name=Aladin  e ver console vscode:
+     { name: 'Aladin', id: 'qualquercoisa' }
+
 
 
 
