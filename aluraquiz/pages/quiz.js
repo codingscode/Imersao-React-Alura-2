@@ -5,6 +5,8 @@ import QuizLogo from '../src/components/QuizLogo'
 import QuizBackground from '../src/components/QuizBackground'
 import QuizContainer from '../src/components/QuizContainer'
 import Button from '../src/components/Button'
+import AlternativesForm from '../src/components/AlternativesForm'
+
 
 
 function ResultWidget({ results }) {
@@ -71,7 +73,7 @@ function QuestionWidget({ question, totalQuestions, questionIndex, onSubmit, add
           <Widget.Content>
               <h2>{question.title}</h2>
               <p>{question.description}</p>
-              <form onSubmit={(infosDoEvento) => { 
+              <AlternativesForm onSubmit={(infosDoEvento) => { 
                   infosDoEvento.preventDefault()
                   setIsQuestionSubmited(true)
                   setTimeout(() => {
@@ -79,13 +81,18 @@ function QuestionWidget({ question, totalQuestions, questionIndex, onSubmit, add
                       onSubmit()
                       setIsQuestionSubmited(false)
                       setSelectedAlternative(undefined)  
-                  }, 1000)
+                  }, 2000)
                 }} >
                   {question.alternatives.map((alternative, alternativeIndex) => {
                       const alternativeId = `alternative__${alternativeIndex}`
+                      const alternativeStatus = isCorrect ? 'SUCCESS' : 'ERROR' 
+                      const isSelected = selectedAlternative === alternativeIndex
+
                       return (
-                        <Widget.Topic key={alternativeId} htmlFor={alternativeId} as="label" >
-                            <input id={alternativeId} type="radio" name={questionId} onChange={() => setSelectedAlternative(alternativeIndex)} />
+                        <Widget.Topic key={alternativeId} htmlFor={alternativeId} as="label" data-selected={isSelected}
+                              data-status={isQuestionSubmited && alternativeStatus}  >
+                            <input id={alternativeId} type="radio" name={questionId} 
+                                 onChange={() => setSelectedAlternative(alternativeIndex)} style={{display: 'none'}} />
                             {alternative}
                         </Widget.Topic>
                       )
@@ -98,7 +105,7 @@ function QuestionWidget({ question, totalQuestions, questionIndex, onSubmit, add
                   {isQuestionSubmited && isCorrect && <p>Você acertou !</p> }
                   {isQuestionSubmited && !isCorrect && <p>Você errou !</p> }
                                     
-              </form>
+              </AlternativesForm>
           </Widget.Content>
       </Widget>
     )
@@ -126,7 +133,7 @@ export default function QuizPage() {
         useEffect(() => {
             setTimeout(() => {
                setScreenState(screenStates.QUIZ)
-            }, 1000)
+            }, 2000)
 
         }, [])
 
