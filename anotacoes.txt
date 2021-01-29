@@ -366,8 +366,34 @@ acessar http://localhost:3000/quiz/qualquercoisa?name=Aladin  e ver console vsco
      { name: 'Aladin', id: 'qualquercoisa' }
 
 
+no console do browser digitar:
+       fetch('https://aluraquiz-css.omariosouto.vercel.app/')
+                .then((res) => {
+                    console.log(res)
+                })
+                .catch((erro) => {
+                    console.log('houve erro')
+                })
+
+       fetch('https://aluraquiz-css.omariosouto.vercel.app/api/db')
+                .then((res) => {
+                    if(res.ok) {
+                       return res.json()
+                    }
+                    throw new Error('Falha de acesso')
+                })
+                .then((respostaConvertidaEmObjeto) => {
+                    console.log('resp convertida: ', respostaConvertidaEmObjeto)
+                })
+                .catch((erro) => {
+                    console.log('houve erro')
+                })
 
 
+
+
+
+ver:  https://httpstatusdogs.com/
 
 
 
