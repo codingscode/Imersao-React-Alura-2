@@ -390,10 +390,13 @@ no console do browser digitar:
                 })
 
 
-
-
-
 ver:  https://httpstatusdogs.com/
+
+
+acessar http://localhost:3000/quiz/qualquercoisa?name=Aladin:
+       ver console do vscode
+
+
 
 
 
