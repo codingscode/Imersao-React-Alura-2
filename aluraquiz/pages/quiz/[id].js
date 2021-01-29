@@ -1,23 +1,26 @@
 import React from 'react'
 import QuizScreen from '../../src/screens/Quiz'
+import { ThemeProvider } from 'styled-components'
 
 
 export default function QuizDaGalera({ dbExterno }) {
    console.log('dbExterno: ', dbExterno)
 
     return (
-         <QuizScreen externalQuestions={dbExterno.questions} bg={dbExterno.bg} />
-         /* <pre>
-          {JSON.stringify(dbExterno.questions, null, 4)}
-         </pre> */
+         <ThemeProvider theme={dbExterno.theme}>
+            <QuizScreen externalQuestions={dbExterno.questions} bg={dbExterno.bg} />
+
+         </ThemeProvider>
+         
     )
 }
 
 
 export async function getServerSideProps(context) {
+      const [projectName, githubUser] = context.query.id.split('__')
       console.log('Infos que o Next dá para nós: ', context.query)  // { name: 'Aladin', id: 'qualquercoisa' }
 
-      const dbExterno = await fetch('https://aluraquiz-css.omariosouto.vercel.app/api/db')
+      const dbExterno = await fetch(`https://${projectName}.${githubUser}.vercel.app/api/db`)
          .then((res) => {
             if(res.ok) {
                return res.json()
@@ -29,7 +32,7 @@ export async function getServerSideProps(context) {
             return 'houve erro'
          })
 
-      console.log('dbExterno: \n', dbExterno)
+      //console.log('dbExterno: \n', dbExterno)
 
       return {
          props: { dbExterno }

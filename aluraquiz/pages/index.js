@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 import db from '../db.json'
 import Widget from '../src/components/Widget'
 import Footer from '../src/components/Footer'
@@ -56,7 +55,7 @@ export default function Home() {
 
                                 return (
                                     <li key={indice} >
-                                          <Widget.Topic href={linkExterno} >
+                                          <Widget.Topic href={`/quiz/${projectName}__${githubUser}`} >
                                              {`${githubUser}/${projectName}`}   
                                           </Widget.Topic>
                                     </li>
