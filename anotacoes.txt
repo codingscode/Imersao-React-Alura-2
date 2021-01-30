@@ -401,7 +401,7 @@ acessar http://localhost:3000/quiz/qualquercoisa?name=Aladin:
        ver a tela *idem
 
 
-
+seta(flecha) de voltar
 
 
 

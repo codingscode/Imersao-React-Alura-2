@@ -10,7 +10,7 @@ import { useRouter } from 'next/router'
 import Input from '../src/components/Input'
 import Button from '../src/components/Button'
 import QuizContainer from '../src/components/QuizContainer'
-
+import Link from '../src/components/Link'
 
 
 
@@ -55,7 +55,7 @@ export default function Home() {
 
                                 return (
                                     <li key={indice} >
-                                          <Widget.Topic href={`/quiz/${projectName}__${githubUser}`} >
+                                          <Widget.Topic as={Link} href={`/quiz/${projectName}__${githubUser}`} >
                                              {`${githubUser}/${projectName}`}   
                                           </Widget.Topic>
                                     </li>

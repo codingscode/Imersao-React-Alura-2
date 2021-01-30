@@ -8,7 +8,7 @@ export default function QuizDaGalera({ dbExterno }) {
 
     return (
          <ThemeProvider theme={dbExterno.theme}>
-            <QuizScreen externalQuestions={dbExterno.questions} bg={dbExterno.bg} />
+            <QuizScreen externalQuestions={dbExterno.questions} externalBg={dbExterno.bg} />
 
          </ThemeProvider>
          
@@ -20,23 +20,30 @@ export async function getServerSideProps(context) {
       const [projectName, githubUser] = context.query.id.split('__')
       console.log('Infos que o Next dá para nós: ', context.query)  // { name: 'Aladin', id: 'qualquercoisa' }
 
-      const dbExterno = await fetch(`https://${projectName}.${githubUser}.vercel.app/api/db`)
-         .then((res) => {
-            if(res.ok) {
-               return res.json()
-            }
-            throw new Error('Falha de acesso')
-         })
-         .then((respostaConvertidaEmObjeto) => respostaConvertidaEmObjeto)
-         .catch((erro) => {
-            return 'houve erro'
-         })
+      try {
+         const dbExterno = await fetch(`https://${projectName}.${githubUser}.vercel.app/api/db`)
+            .then((res) => {
+               if(res.ok) {
+                  return res.json()
+               }
+               throw new Error('Falha de acesso')
+            })
+            .then((respostaConvertidaEmObjeto) => respostaConvertidaEmObjeto)
+            .catch((erro) => {
+               return 'houve erro'
+            })
+   
+         //console.log('dbExterno: \n', dbExterno)
+   
+         return {
+            props: { dbExterno }
+         }
 
-      //console.log('dbExterno: \n', dbExterno)
-
-      return {
-         props: { dbExterno }
       }
+      catch(error) {
+          throw new Error(error)
+      }
+
 }
 
 
