@@ -11,7 +11,7 @@ import Input from '../src/components/Input'
 import Button from '../src/components/Button'
 import QuizContainer from '../src/components/QuizContainer'
 import Link from '../src/components/Link'
-
+import { motion } from 'framer-motion'
 
 
 export default function Home() {
@@ -27,7 +27,7 @@ export default function Home() {
             </Head>
             <QuizContainer>
                <QuizLogo />
-               <Widget>
+               <Widget as={motion.section} variants={{ show: {opacity: 1}, hidden: {opacity: 0} }} initial="hidden" animate="show" >
                   <Widget.Header>
                      <h1>The legend of zelda</h1>
                   </Widget.Header>

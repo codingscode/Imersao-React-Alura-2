@@ -403,9 +403,13 @@ acessar http://localhost:3000/quiz/qualquercoisa?name=Aladin:
 
 seta(flecha) de voltar
 
+https://www.framer.com/motion/
+
+no terminal do projeto:
+       npm i framer-motion
 
 
-
+efeitos
 
 
 
