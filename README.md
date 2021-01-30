@@ -2,3 +2,5 @@
 
 
 ## commit a commit
+
+digitar no terminal: npm run dev
